@@ -3,6 +3,7 @@ package com.leevicente.alertme;
 import android.content.Intent;
 import com.leevicente.alertme.helpers.InputValidation;
 import com.leevicente.alertme.sql.DatabaseHelper;
+import com.leevicente.alertme.helpers.SessionManager;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class Login extends AppCompatActivity {
 
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
+    private SessionManager session;
 
     private Button loginBtn;
     private Button registerBtn;
@@ -41,6 +43,7 @@ public class Login extends AppCompatActivity {
     private void initObjects() {
         databaseHelper = new DatabaseHelper(activity);
         inputValidation = new InputValidation(activity);
+        session = new SessionManager(getApplicationContext());
     }
 
     public void buttonClickLogin(View v){
@@ -63,6 +66,7 @@ public class Login extends AppCompatActivity {
         if(databaseHelper.checkUser(username.getText().toString().trim(), password.getText().toString().trim())){
             Intent toMain = new Intent(activity, Main.class);
             toMain.putExtra("Username", username.getText().toString().trim());
+            session.createLoginSession(username.getText().toString().trim());
             emptyInputEditText();
             startActivity(toMain);
         }

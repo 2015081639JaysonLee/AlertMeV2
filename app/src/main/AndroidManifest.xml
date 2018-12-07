@@ -25,6 +25,7 @@
         <activity android:name=".Main"/>
         <activity android:name=".About"/>
         <activity android:name=".Settings"/>
+        <receiver android:name=".BroadcastReceiver.MyBroadcastReceiver"/>
     </application>
 
 </manifest>

@@ -71,17 +71,18 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.close();
     }
 
-    public List<User> getAllUser(){
-        String[] columns = {
-                COLUMN_USER_ID, COLUMN_FIRSTNAME, COLUMN_LASTNAME, COLUMN_CONTACT, COLUMN_EMER_NAME, COLUMN_EMER_CONTACT,
-                COLUMN_USERNAME, COLUMN_PASSWORD};
-
-        String sortOrder = COLUMN_USERNAME + " ASC";
-        List<User> userList = new ArrayList<>();
-
+    public List<User> getUser(String username){
+        String[] columns = {COLUMN_USER_ID, COLUMN_FIRSTNAME, COLUMN_LASTNAME, COLUMN_USERNAME, COLUMN_PASSWORD,
+                COLUMN_CONTACT, COLUMN_EMER_NAME, COLUMN_EMER_CONTACT};
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_USER, columns, null, null, null, null, sortOrder);
+        String selection = COLUMN_USERNAME + " = ?";
+
+        String[] selectionArgs = {username};
+
+        List<User> userList = new ArrayList<>();
+
+        Cursor cursor = db.query(TABLE_USER, columns, selection, selectionArgs, null, null, null);
 
         if(cursor.moveToFirst()){
             do{
