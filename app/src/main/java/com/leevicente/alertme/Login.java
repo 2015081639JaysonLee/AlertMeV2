@@ -34,7 +34,7 @@ public class Login extends AppCompatActivity {
 
     private void initLogin(){
         username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+        password = findViewById(R.id.Password);
 
         loginBtn = findViewById(R.id.loginBtn);
         registerBtn = findViewById(R.id.registerBtn);
