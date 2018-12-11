@@ -48,8 +48,8 @@ public class Settings extends AppCompatActivity {
         String username_to_put = ((User) userInfo).getUserName();
         username.setText(username_to_put);
 
-        String password_to_put = ((User) userInfo).getPassword();
-        password.setText(password_to_put);
+//        String password_to_put = ((User) userInfo).getPassword();
+//        password.setText(password_to_put);
 
         String emerName_to_put = ((User) userInfo).getEmerName();
         emerName.setText(emerName_to_put);
@@ -62,7 +62,7 @@ public class Settings extends AppCompatActivity {
         fullname = findViewById(R.id.Fullname);
         contact = findViewById(R.id.Contact);
         username = findViewById(R.id.Username);
-        password = findViewById(R.id.Password);
+//        password = findViewById(R.id.Password);
         emerName = findViewById(R.id.EmerName);
         emerNum = findViewById(R.id.EmerNum);
     }
